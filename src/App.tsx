@@ -8,7 +8,7 @@ const App = (props) => {
     <>
       {isOpen && <Modal setIsOpen={setIsOpen} message={'test'} />}
       <div className='app'>
-        <h1 className='title'>Coucou</h1>
+        <h1 className='title'>Test</h1>
       </div>
     </>
   );

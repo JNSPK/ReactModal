@@ -1,4 +1,4 @@
-const Overlay = ({ children, onClick }) => {
+const Overlay = ({ children, onClick, overlayStyle }) => {
   return (
     <div
       className='modal-overlay'
@@ -15,6 +15,7 @@ const Overlay = ({ children, onClick }) => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        ...overlayStyle,
       }}
       onClick={onClick}>
       {children}
@@ -22,7 +23,7 @@ const Overlay = ({ children, onClick }) => {
   );
 };
 
-const Box = ({ message }) => {
+const Box = ({ message, boxStyle }) => {
   return (
     <div
       className='modal-box'
@@ -36,6 +37,7 @@ const Box = ({ message }) => {
         width: '50%',
         height: '50%',
         zIndex: '1001',
+        ...boxStyle,
       }}>
       <p
         style={{
@@ -49,8 +51,10 @@ const Box = ({ message }) => {
 
 const Modal = (props) => {
   return (
-    <Overlay onClick={() => props.setIsOpen(false)}>
-      <Box message={props.message} />
+    <Overlay
+      onClick={() => props.setIsOpen(false)}
+      overlayStyle={props.overlayStyle}>
+      <Box message={props.message} boxStyle={props.boxStyle} />
     </Overlay>
   );
 };
