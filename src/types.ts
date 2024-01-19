@@ -15,6 +15,7 @@ export interface OverlayProps {
   children?: ReactNode;
   onClick?: (event: MouseEvent) => void;
   overlayStyle?: CSSProperties;
+  fade?: boolean;
   secondOverlayStyle?: CSSProperties;
 }
 
@@ -32,6 +33,7 @@ export interface BoxProps {
   enableSecondModalButton?: boolean;
   secondModalOptions?: ModalOptions;
   secondOverlayStyle?: CSSProperties;
+  fade?: boolean;
 }
 
 export interface ModalProps {
@@ -50,6 +52,7 @@ export interface ModalOptions {
   msgStyle?: CSSProperties;
   btnStyle?: CSSProperties;
   enableSecondModalButton?: boolean;
+  fade?: boolean;
   secondModalOptions?: SecondModalOptions;
 }
 
@@ -60,6 +63,7 @@ export interface SecondModalOptions {
   closeStyle?: React.CSSProperties;
   msgStyle?: React.CSSProperties;
   secondOverlayStyle?: CSSProperties;
+  fade?: boolean;
 }
 
 export type BoxClickHandler = (e: MouseEvent<HTMLDivElement>) => void;

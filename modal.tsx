@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import {
   BoxClickHandler,
@@ -6,10 +6,23 @@ import {
   ModalProps,
   OverlayCLickHandler,
   OverlayProps,
-} from '../types';
+} from './src/types';
 import { useState } from 'react';
 
-const Overlay: FC<OverlayProps> = ({ children, onClick, overlayStyle }) => {
+const Overlay: FC<OverlayProps> = ({
+  children,
+  onClick,
+  overlayStyle,
+  fade,
+}) => {
+  const [isFading, setIsFading] = useState(false);
+
+  useEffect(() => {
+    if (fade) {
+      setIsFading(true);
+    }
+  }, [fade]);
+
   return (
     <div
       className='modal-overlay'
@@ -24,6 +37,8 @@ const Overlay: FC<OverlayProps> = ({ children, onClick, overlayStyle }) => {
         alignItems: 'center',
         backdropFilter: 'blur(5px)',
         top: '0',
+        opacity: isFading ? '1' : '0',
+        transition: 'opacity 0.8s ease',
         ...overlayStyle,
       }}
       onClick={onClick}>
@@ -126,7 +141,8 @@ const Modal: FC<ModalProps> = ({ setIsOpen, options }) => {
   return ReactDOM.createPortal(
     <Overlay
       onClick={() => setIsOpen(false)}
-      overlayStyle={options?.overlayStyle}>
+      overlayStyle={options?.overlayStyle}
+      fade={options?.fade}>
       <Box
         message={options?.message || ''}
         boxStyle={options?.boxStyle}
@@ -147,6 +163,7 @@ const Modal: FC<ModalProps> = ({ setIsOpen, options }) => {
           msgStyle={options?.secondModalOptions?.msgStyle}
           secondOverlayStyle={options?.secondModalOptions?.secondOverlayStyle}
           onClick={closeSecondModal}
+          fade={options?.fade}
         />
       )}
     </Overlay>,
@@ -161,8 +178,17 @@ const SecondModal: FC<BoxProps> = ({
   closeStyle,
   msgStyle,
   secondOverlayStyle,
+  fade,
   onClick,
 }) => {
+  const [isFading, setIsFading] = useState(false);
+
+  useEffect(() => {
+    if (fade) {
+      setIsFading(true);
+    }
+  }, [fade]);
+
   const handleSecondBoxClick: BoxClickHandler = (e) => {
     const target = e.target as HTMLElement;
 
@@ -191,6 +217,8 @@ const SecondModal: FC<BoxProps> = ({
         justifyContent: 'center',
         alignItems: 'center',
         backdropFilter: 'blur(5px)',
+        opacity: isFading ? '1' : '0',
+        transition: 'opacity 0.8s ease',
         ...secondOverlayStyle,
       }}
       onClick={closeSecondModal}>

@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import Modal from './components/modal';
-import customCloseIcon from './svg/annuler.png';
-
+import Modal from '../modal';
 import './App.css';
 
 const App = () => {
@@ -19,7 +17,6 @@ const App = () => {
       justifyContent: 'center',
       alignItems: 'center',
     },
-    // customCloseIcon: customCloseIcon,
     closeStyle: {
       borderRadius: '50%',
       boxShadow: '0px 10px 10px -3px rgba(0,0,0,0.1)',
@@ -28,6 +25,7 @@ const App = () => {
       color: 'red',
     },
     enableSecondModalButton: false,
+    fade: true,
   };
 
   const modalOptions2 = {
@@ -43,7 +41,6 @@ const App = () => {
       justifyContent: 'center',
       alignItems: 'center',
     },
-    // customCloseIcon: customCloseIcon,
     closeStyle: {
       borderRadius: '50%',
       boxShadow: '0px 10px 10px -3px rgba(0,0,0,0.1)',
@@ -52,6 +49,7 @@ const App = () => {
       color: 'red',
     },
     enableSecondModalButton: true,
+    fade: true,
 
     secondModalOptions: {
       message: 'This is the second modal heyyy!',
@@ -62,7 +60,6 @@ const App = () => {
         borderRadius: '1rem',
         boxShadow: '0px 10px 10px -3px rgba(0,0,0,0.1)',
       },
-      customCloseIcon: customCloseIcon,
       closeStyle: {
         borderRadius: '50%',
         boxShadow: '0px 10px 10px -3px rgba(0,0,0,0.1)',
@@ -74,6 +71,7 @@ const App = () => {
         backgroundColor: '#6564DBdb',
       },
       enableSecondModalButton: false,
+      fade: true,
     },
   };
   return (
