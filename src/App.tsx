@@ -1,16 +1,100 @@
 import { useState } from 'react';
 import Modal from './components/modal';
+import customCloseIcon from './svg/annuler.png';
+
 import './App.css';
 
-const App = (props) => {
-  const [isOpen, setIsOpen] = useState(true);
+const App = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
+
+  const modalOptions = {
+    message: 'Hello, this is the first modal!',
+    boxStyle: {
+      boxShadow: '0px 10px 10px -3px rgba(0,0,0,0.1)',
+    },
+    overlayStyle: {
+      backgroundColor: '#e0e29f',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    // customCloseIcon: customCloseIcon,
+    closeStyle: {
+      borderRadius: '50%',
+      boxShadow: '0px 10px 10px -3px rgba(0,0,0,0.1)',
+    },
+    msgStyle: {
+      color: 'red',
+    },
+    enableSecondModalButton: false,
+  };
+
+  const modalOptions2 = {
+    message: 'Hello, this is another first modal!',
+    boxStyle: {
+      backgroundColor: 'white',
+      boxShadow: '0px 10px 10px -3px rgba(0,0,0,0.1)',
+      gap: '2rem',
+    },
+    overlayStyle: {
+      backgroundColor: '#e0e29f',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    // customCloseIcon: customCloseIcon,
+    closeStyle: {
+      borderRadius: '50%',
+      boxShadow: '0px 10px 10px -3px rgba(0,0,0,0.1)',
+    },
+    msgStyle: {
+      color: 'red',
+    },
+    enableSecondModalButton: true,
+
+    secondModalOptions: {
+      message: 'This is the second modal heyyy!',
+      boxStyle: {
+        backgroundColor: 'lightblue',
+        width: '50%',
+        height: '20%',
+        borderRadius: '1rem',
+        boxShadow: '0px 10px 10px -3px rgba(0,0,0,0.1)',
+      },
+      customCloseIcon: customCloseIcon,
+      closeStyle: {
+        borderRadius: '50%',
+        boxShadow: '0px 10px 10px -3px rgba(0,0,0,0.1)',
+      },
+      msgStyle: {
+        color: 'blue',
+      },
+      secondOverlayStyle: {
+        backgroundColor: '#6564DBdb',
+      },
+      enableSecondModalButton: false,
+    },
+  };
   return (
-    <>
-      {isOpen && <Modal setIsOpen={setIsOpen} message={'test'} />}
-      <div className='app'>
-        <h1 className='title'>Test</h1>
-      </div>
-    </>
+    <div className='app'>
+      <button className='test-btn' onClick={() => setIsOpen(true)}>
+        Open Modal
+      </button>
+      <button className='test-btn' onClick={() => setIsOpen2(true)}>
+        Open Modals
+      </button>
+      {isOpen && (
+        <Modal isOpen={isOpen} setIsOpen={setIsOpen} options={modalOptions} />
+      )}
+      {isOpen2 && (
+        <Modal
+          isOpen={isOpen2}
+          setIsOpen={setIsOpen2}
+          options={modalOptions2}
+        />
+      )}
+    </div>
   );
 };
 
