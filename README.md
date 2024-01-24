@@ -21,17 +21,16 @@ const [isOpen, setIsOpen] = useState(false);
 
 You can add a `const` to set css properties to the modal.
 There are some default values but you can overcharge them with overlayStyle, boxStyle, closeStyle, msgStyle.
-You can set the fade to true to allow modal to fade in or false if you don't want that behavior.
-Besides, there a possibility to have a second modal into the first one with enableSecondModalButton. : e.g.
+You can set the fade to true to allow modal to fade in or false if you don't want that behavior.: e.g.
 
 ```javascript
 const modalOptions = {
-  message: 'Hello, this is the modal!',
+  message: 'You can write wathever you want here!',
   boxStyle: {
     boxShadow: '0px 10px 10px -3px rgba(0,0,0,0.1)',
   },
   overlayStyle: {
-    backgroundColor: '#e0e29f',
+    backgroundColor: '#3D1663',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -43,59 +42,11 @@ const modalOptions = {
   msgStyle: {
     color: 'red',
   },
-  enableSecondModalButton: false,
   fade: true,
-};
-
-const modalOptions2 = {
-  message: 'Hello, this is another modal!',
-  boxStyle: {
-    backgroundColor: 'white',
-    boxShadow: '0px 10px 10px -3px rgba(0,0,0,0.1)',
-    gap: '2rem',
-  },
-  overlayStyle: {
-    backgroundColor: '#e0e29f',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  closeStyle: {
-    borderRadius: '50%',
-    boxShadow: '0px 10px 10px -3px rgba(0,0,0,0.1)',
-  },
-  msgStyle: {
-    color: 'red',
-  },
-  enableSecondModalButton: true,
-  fade: true,
-
-  secondModalOptions: {
-    message: 'This is the second modal heyyy!',
-    boxStyle: {
-      backgroundColor: 'lightblue',
-      width: '50%',
-      height: '20%',
-      borderRadius: '1rem',
-      boxShadow: '0px 10px 10px -3px rgba(0,0,0,0.1)',
-    },
-    closeStyle: {
-      borderRadius: '50%',
-      boxShadow: '0px 10px 10px -3px rgba(0,0,0,0.1)',
-    },
-    msgStyle: {
-      color: 'blue',
-    },
-    secondOverlayStyle: {
-      backgroundColor: '#6564DBdb',
-    },
-    enableSecondModalButton: false,
-    fade: true,
-  },
 };
 ```
 
-than add the component to your project
+then add the component to your project :
 
 ```javascript
 <button className='test-btn' onClick={() => setIsOpen(true)}>
