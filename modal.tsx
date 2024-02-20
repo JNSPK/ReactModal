@@ -115,6 +115,20 @@ const Box: FC<BoxProps> = ({
 };
 
 const Modal: FC<ModalProps> = ({ setIsOpen, options }) => {
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyPress);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [setIsOpen]);
+
   return (
     <Overlay
       onClick={() => setIsOpen(false)}
