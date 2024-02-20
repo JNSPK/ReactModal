@@ -6,6 +6,8 @@ import {
   OverlayProps,
 } from './src/types';
 
+// Overlay to setup modal's background
+
 const Overlay: FC<OverlayProps> = ({
   children,
   onClick,
@@ -44,7 +46,11 @@ const Overlay: FC<OverlayProps> = ({
   );
 };
 
+// Default closing icon
+
 const defaultCloseIcon = `https://img.icons8.com/ios-filled/50/cancel.png`;
+
+// Box to display the message
 
 const Box: FC<BoxProps> = ({
   message,
@@ -113,6 +119,8 @@ const Box: FC<BoxProps> = ({
     </div>
   );
 };
+
+// Complete modal that contain Overlay + Box
 
 const Modal: FC<ModalProps> = ({ setIsOpen, options }) => {
   useEffect(() => {
